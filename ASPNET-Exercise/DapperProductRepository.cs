@@ -16,10 +16,8 @@ namespace ASPNET_Exercise
 
         public IEnumerable<Product> GetAllProducts()
         {
-            Console.WriteLine();
             return _conn.Query<Product>("SELECT * FROM Products");
         }
-		
     }
 }
 
