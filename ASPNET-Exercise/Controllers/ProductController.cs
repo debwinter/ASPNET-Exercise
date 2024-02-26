@@ -22,6 +22,12 @@ namespace ASPNET_Exercise.Controllers
             var products = repo.GetAllProducts();
             return View(products);
         }
+
+        public IActionResult ViewProduct(int id)
+        {
+            var prod = repo.GetProduct(id);
+            return View(prod);
+        }
     }
 }
 

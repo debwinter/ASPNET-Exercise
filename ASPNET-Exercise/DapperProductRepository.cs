@@ -18,6 +18,11 @@ namespace ASPNET_Exercise
         {
             return _conn.Query<Product>("SELECT * FROM Products");
         }
+
+        public Product GetProduct(int id)
+        {
+            return _conn.QuerySingle<Product>("SELECT * FROM Products WHERE ProductID = @pID", new { pID = id });
+        }
     }
 }
 
