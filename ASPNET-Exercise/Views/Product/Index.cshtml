@@ -16,7 +16,7 @@
         <tr>
             <td>@product.ProductID</td>
             <td><a href="/Product/ViewProduct/@product.ProductID">@product.Name</a></td>
-            <td>@product.Price</td>
+            <td>$@product.Price.ToString("0.00")</td>
             <td>@product.CategoryID</td>
             <td>@product.OnSale</td>
             <td>@product.StockLevel</td>

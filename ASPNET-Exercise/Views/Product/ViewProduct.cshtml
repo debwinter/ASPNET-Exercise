@@ -14,9 +14,13 @@
     <tr>
         <td>@Model.ProductID</td>
         <td>@Model.Name</td>
-        <td>@Model.Price</td>
+        <td>$@Model.Price.ToString("0.00")</td>
         <td>@Model.CategoryID</td>
         <td>@Model.OnSale</td>
         <td>@Model.StockLevel</td>
     </tr>
 </table>
+
+<div style="display: block">
+    <a href="/Product/UpdateProduct/@Model.ProductID">Update this product</a>
+</div>

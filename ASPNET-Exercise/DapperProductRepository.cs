@@ -23,6 +23,11 @@ namespace ASPNET_Exercise
         {
             return _conn.QuerySingle<Product>("SELECT * FROM Products WHERE ProductID = @pID", new { pID = id });
         }
+
+        public void UpdateProduct(Product product)
+        {
+            _conn.Execute("UPDATE products SET Name = @newName, Price = @newPrice WHERE ProductID = @id", new { newName = product.Name, newPrice = product.Price, id = product.ProductID });
+        }
     }
 }
 

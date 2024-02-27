@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASPNET_Exercise.Models;
 using Microsoft.AspNetCore.Mvc;
+
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,6 +29,19 @@ namespace ASPNET_Exercise.Controllers
         {
             var prod = repo.GetProduct(id);
             return View(prod);
+        }
+
+        public IActionResult UpdateProduct(int id)
+        {
+            var prod = repo.GetProduct(id);
+            if (prod == null) return View("ProductNotFound");
+            return View(prod);
+        }
+
+        public IActionResult UpdateProductToDatabase(Product product)
+        {
+            repo.UpdateProduct(product);
+            return RedirectToAction("ViewProduct", new { id = product.ProductID });
         }
     }
 }
