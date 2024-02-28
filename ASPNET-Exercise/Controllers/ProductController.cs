@@ -55,6 +55,12 @@ namespace ASPNET_Exercise.Controllers
             repo.InsertProduct(newProduct);
             return RedirectToAction("Index");
         }
+
+        public IActionResult DeleteProductFromDatabase(Product product)
+        {
+            repo.DeleteProduct(product);
+            return RedirectToAction("Index");
+        }
     }
 }
 

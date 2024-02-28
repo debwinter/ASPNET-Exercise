@@ -22,6 +22,13 @@ namespace ASPNET_Exercise
             return product;
         }
 
+        public void DeleteProduct(Product product)
+        {
+            _conn.Execute("DELETE FROM Products WHERE ProductID = @id;", new { id = product.ProductID });
+            _conn.Execute("DELETE FROM Sales WHERE ProductID = @id;", new { id = product.ProductID });
+            _conn.Execute("DELETE FROM Reviews WHERE ProductID = @id;", new { id = product.ProductID });
+        }
+
         public IEnumerable<Product> GetAllProducts()
         {
             return _conn.Query<Product>("SELECT * FROM Products;");
@@ -39,7 +46,7 @@ namespace ASPNET_Exercise
 
         public void InsertProduct(Product newProduct)
         {
-            _conn.Execute("INSERT INTO products (Name, Price, CategoryID, OnSale) VALUES (@name, @price, @catID, @onSale)", new { name = newProduct.Name, price = newProduct.Price, catID = newProduct.CategoryID, onSale = newProduct.OnSale });
+            _conn.Execute("INSERT INTO products (Name, Price, CategoryID, OnSale) VALUES (@name, @price, @catID, @onSale);", new { name = newProduct.Name, price = newProduct.Price, catID = newProduct.CategoryID, onSale = newProduct.OnSale });
         }
 
         public void UpdateProduct(Product product)
