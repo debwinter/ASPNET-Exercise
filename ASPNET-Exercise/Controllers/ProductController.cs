@@ -43,6 +43,18 @@ namespace ASPNET_Exercise.Controllers
             repo.UpdateProduct(product);
             return RedirectToAction("ViewProduct", new { id = product.ProductID });
         }
+
+        public IActionResult InsertProduct(Product newProduct)
+        {
+            var prod = repo.AssignCategory();
+            return View(prod);
+        }
+
+        public IActionResult InsertProductToDatabase(Product newProduct)
+        {
+            repo.InsertProduct(newProduct);
+            return RedirectToAction("Index");
+        }
     }
 }
 

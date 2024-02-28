@@ -12,5 +12,14 @@
     <label asp-for="Price" class="control-label">Price</label>
     <input type="number" step="0.01" name="Price" class="form-control" value="@Model.Price" />
 
+    <div class="form-group">
+        <label for="">Is this a SALE price?</label>
+        <select class="form-control" name="OnSale" value="">
+            <option value=@Model.OnSale></option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+
     <input type="submit" value="Update Product" class="btn btn-primary" />
 }
